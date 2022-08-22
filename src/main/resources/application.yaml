@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://10.95.31.66:5432/postgres
+    url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: postgres
   jpa:
@@ -9,12 +9,15 @@ spring:
       ddl-auto: create
     properties:
       hibernate:
+        javax:
+          cache:
+            provider: org.apache.ignite.cache.CachingProvider
         cache:
           use_second_level_cache: true
           use_query_cache: true
           generate_statistics: true
           region:
-            factory_class: org.apache.ignite.cache.hibernate.HibernateRegionFactory
+            factory_class: org.hibernate.cache.jcache.JCacheRegionFactory
       org:
         apache:
           ignite:
@@ -23,5 +26,5 @@ spring:
               default_access_type: READ_WRITE
 app:
   ignite:
-    address: 10.95.31.66:47500
+    address: localhost:10800
     instance_name: test_soumen

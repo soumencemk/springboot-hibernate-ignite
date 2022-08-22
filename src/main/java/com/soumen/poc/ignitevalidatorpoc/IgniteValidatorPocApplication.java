@@ -6,29 +6,22 @@ import org.apache.ignite.configuration.IgniteConfiguration;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 
 import java.util.stream.Stream;
 
 @SpringBootApplication
+@EnableCaching
 public class IgniteValidatorPocApplication {
 
     public static void main(String[] args) {
-        //Ignition.start(IgniteConfig.igniteServerConfiguration());
         SpringApplication.run(IgniteValidatorPocApplication.class, args);
     }
-
-    @Bean
-    public IgniteSpringBean igniteSpringBean(IgniteConfiguration igniteClientConfiguration) {
-        IgniteSpringBean igniteSpringBean = new IgniteSpringBean();
-        igniteSpringBean.setConfiguration(igniteClientConfiguration);
-        return igniteSpringBean;
-    }
-
     @Bean
     ApplicationRunner applicationRunner(EmployeeRepository repository) {
         return args -> {
-            Stream.of("Soumen", "Mita", "Puchu")
+            Stream.of("Simon","David","Ian","Bob","Vasilis","Adam","Eliza")
                     .map(name -> new Employee(null, name))
                     .forEach(repository::save);
         };

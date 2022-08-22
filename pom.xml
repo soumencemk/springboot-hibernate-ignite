@@ -16,6 +16,7 @@
     <properties>
         <java.version>11</java.version>
         <ignite.version>2.9.1</ignite.version>
+        <gridgain.version>8.8.20</gridgain.version>
     </properties>
     <dependencies>
         <dependency>
@@ -32,29 +33,29 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-jcache</artifactId>
+            <version>5.4.2.Final</version>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>org.apache.ignite</groupId>
+            <groupId>org.gridgain</groupId>
             <artifactId>ignite-core</artifactId>
-            <version>${ignite.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.ignite</groupId>
-            <artifactId>ignite-spring</artifactId>
-            <version>${ignite.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.ignite</groupId>
-            <artifactId>ignite-indexing</artifactId>
-            <version>${ignite.version}</version>
+            <version>${gridgain.version}</version>
         </dependency>
         <dependency>
             <groupId>org.gridgain</groupId>
-            <artifactId>ignite-hibernate_5.3</artifactId>
-            <version>8.7.13</version>
+            <artifactId>ignite-spring</artifactId>
+            <version>${gridgain.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.gridgain</groupId>
+            <artifactId>ignite-indexing</artifactId>
+            <version>${gridgain.version}</version>
         </dependency>
     </dependencies>
     <repositories>
