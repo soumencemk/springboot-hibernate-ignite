@@ -1,0 +1,7 @@
+spring:
+  jpa:
+    show-sql: true
+ignite-client:
+  addresses: 10.95.31.66:10800
+  timeout: 10000
+  tcpNoDelay: false
