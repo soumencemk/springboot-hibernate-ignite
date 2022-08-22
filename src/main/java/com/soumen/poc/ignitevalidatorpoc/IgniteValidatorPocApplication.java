@@ -1,5 +1,8 @@
 package com.soumen.poc.ignitevalidatorpoc;
 
+import org.apache.ignite.IgniteSpringBean;
+import org.apache.ignite.Ignition;
+import org.apache.ignite.configuration.IgniteConfiguration;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,7 +14,15 @@ import java.util.stream.Stream;
 public class IgniteValidatorPocApplication {
 
     public static void main(String[] args) {
+        //Ignition.start(IgniteConfig.igniteServerConfiguration());
         SpringApplication.run(IgniteValidatorPocApplication.class, args);
+    }
+
+    @Bean
+    public IgniteSpringBean igniteSpringBean(IgniteConfiguration igniteClientConfiguration) {
+        IgniteSpringBean igniteSpringBean = new IgniteSpringBean();
+        igniteSpringBean.setConfiguration(igniteClientConfiguration);
+        return igniteSpringBean;
     }
 
     @Bean
